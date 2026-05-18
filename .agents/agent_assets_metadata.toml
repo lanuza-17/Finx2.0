@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "NfB8_3oFH6el27cDRDjXA"
+uri = "file://artifacts/finance-app/assets/images/icon.png"
+type = "image"
+title = "generated_image"
