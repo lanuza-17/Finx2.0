@@ -54,5 +54,13 @@
     "typescript": "~5.9.2",
     "zod": "catalog:",
     "zod-validation-error": "^3.4.0"
+  },
+  "dependencies": {
+    "@supabase/auth-js": "^2.105.4",
+    "@supabase/functions-js": "^2.105.4",
+    "@supabase/postgrest-js": "^2.105.4",
+    "@supabase/realtime-js": "^2.105.4",
+    "@supabase/storage-js": "^2.105.4",
+    "@supabase/supabase-js": "^2.105.4"
   }
 }

@@ -14,16 +14,28 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { AuthProvider } from "@/context/AuthContext";
+import { FinanceProvider } from "@/context/FinanceContext";
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 const queryClient = new QueryClient();
 
 function RootLayoutNav() {
   return (
-    <Stack screenOptions={{ headerBackTitle: "Back" }}>
+    <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "#0d1117" } }}>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      <Stack.Screen name="add-transaction" options={{ headerShown: false }} />
+      <Stack.Screen name="add-recurrence" options={{ headerShown: false }} />
+      <Stack.Screen name="add-type-sheet" options={{ headerShown: false, presentation: "transparentModal" }} />
+      <Stack.Screen name="accounts" options={{ headerShown: false }} />
+      <Stack.Screen name="cards" options={{ headerShown: false }} />
+      <Stack.Screen name="categories" options={{ headerShown: false }} />
+      <Stack.Screen name="recurrences" options={{ headerShown: false }} />
+      <Stack.Screen name="pending" options={{ headerShown: false }} />
+      <Stack.Screen name="budgets" options={{ headerShown: false }} />
+      <Stack.Screen name="transaction-detail" options={{ headerShown: false }} />
     </Stack>
   );
 }
@@ -48,9 +60,13 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
-          <GestureHandlerRootView>
+          <GestureHandlerRootView style={{ flex: 1 }}>
             <KeyboardProvider>
-              <RootLayoutNav />
+              <AuthProvider>
+                <FinanceProvider>
+                  <RootLayoutNav />
+                </FinanceProvider>
+              </AuthProvider>
             </KeyboardProvider>
           </GestureHandlerRootView>
         </QueryClientProvider>
